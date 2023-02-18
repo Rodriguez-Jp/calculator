@@ -7,38 +7,98 @@
     <link href="../dist/output.css" rel="stylesheet" />
     <title>Document</title>
   </head>
-  <body class="h-screen">
-    <div
-      id="container"
-      class="w-full h-4/5 flex justify-center items-center flex-col mt-5"
-    >
-      <div id="screen" class="border border-red-600 w-5/12 h-1/4"></div>
-      <div class="font-bold border w-5/12 h-5/6 border-red-600">
-        <div id="keys-container" class="grid grid-cols-4 grid-rows-5 h-full">
-          <div id="key">
-            <p class="text-center align-middle">%</p>
+  <body class="h-screen font-mono text-2xl">
+
+    <div id="container" class="w-full h-4/5 flex justify-center items-center flex-col mt-5">
+
+      <div id="screen" class="bg-cyan-900 rounded-t-md border-b w-5/12 h-1/4 text-white"></div>
+
+      <div class="font-bold w-5/12 h-5/6 ">
+
+        <div id="keys-container" class="grid grid-cols-4 grid-rows-5 h-full  text-white rounded-b-md">
+
+          <div class="flex justify-center items-center bg-slate-500 hover:opacity-75 op" value="%">
+            <p class="text-center">%</p>
           </div>
-          <div id="key">CE</div>
-          <div id="key">C</div>
-          <div id="key">Del</div>
-          <div id="key">7</div>
-          <div id="key">8</div>
-          <div id="key">9</div>
-          <div id="key">x</div>
-          <div id="key">4</div>
-          <div id="key">5</div>
-          <div id="key">6</div>
-          <div id="key">-</div>
-          <div id="key">1</div>
-          <div id="key">2</div>
-          <div id="key">3</div>
-          <div id="key">+</div>
-          <div id="key">+/-</div>
-          <div id="key">0</div>
-          <div id="key">.</div>
-          <div id="key">=</div>
+
+          <div class="flex justify-center items-center bg-slate-500 hover:opacity-95 transition-opacity op" value="c">
+            <p class="text-center">C</p>
+          </div>
+
+          <div class="flex justify-center items-center bg-slate-500 hover:opacity-95 transition-opacity op" value="del">
+            <p class="text-center">Del</p>
+          </div>
+          
+          <div class="flex justify-center items-center bg-slate-500 hover:opacity-95 transition-opacity op" value="/">
+            <p class="text-center">÷</p>
+          </div>
+          <div class="flex justify-center items-center bg-cyan-900 hover:opacity-95 transition-opacity num" value="7">
+            <p class="text-center">7</p>
+          </div>
+
+          <div class="flex justify-center items-center bg-cyan-900 hover:opacity-95 transition-opacity num" value="8">
+            <p class="text-center">8</p>
+          </div>
+
+          <div class="flex justify-center items-center bg-cyan-900 hover:opacity-95 transition-opacity num" value="9">
+            <p class="text-center">9</p>
+          </div>
+
+          <div class="flex justify-center items-center bg-slate-500 hover:opacity-95 transition-opacity op" value="x">
+            <p class="text-center">x</p>
+          </div>
+
+          <div class="flex justify-center items-center bg-cyan-900 hover:opacity-95 transition-opacity num" value="4">
+            <p class="text-center">4</p>
+          </div>
+
+          <div class="flex justify-center items-center bg-cyan-900 hover:opacity-95 transition-opacity num" value="5">
+            <p class="text-center">5</p>
+          </div>
+
+          <div class="flex justify-center items-center bg-cyan-900 hover:opacity-95 transition-opacity num" value="6">
+            <p class="text-center">6</p>
+          </div>
+
+          <div class="flex justify-center items-center bg-slate-500 hover:opacity-95 transition-opacity op" value="-">
+            <p class="text-center">-</p>
+          </div>
+
+          <div class="flex justify-center items-center bg-cyan-900 hover:opacity-95 transition-opacity num" value="1">
+            <p class="text-center">1</p>
+          </div>
+
+          <div class="flex justify-center items-center bg-cyan-900 hover:opacity-95 transition-opacity num" value="2">
+            <p class="text-center">2</p>
+          </div>
+
+          <div class="flex justify-center items-center bg-cyan-900 hover:opacity-95 transition-opacity num" value="3">
+            <p class="text-center">3</p>
+          </div>
+
+          <div class="flex justify-center items-center bg-slate-500 hover:opacity-95 transition-opacity op" value="+">
+            <p class="text-center">+</p>
+          </div>
+
+          <div class="flex justify-center items-center bg-cyan-900 hover:opacity-95 transition-opacity op" value="sign">
+            <p class="text-center">+/-</p>
+          </div>
+
+          <div class="flex justify-center items-center bg-cyan-900 hover:opacity-95 transition-opacity num" value="0">
+            <p class="text-center">0</p>
+          </div>
+
+          <div class="flex justify-center items-center bg-cyan-900 hover:opacity-95 transition-opacity num" value=".">
+            <p class="text-center">.</p>
+          </div>
+
+          <div class="flex justify-center items-center bg-slate-500 hover:opacity-95 transition-opacity op" value="=">
+            <p class="text-center">=</p>
+          </div>
+
         </div>
-      </div>
     </div>
+
+    <script src="./app.js"></script>
   </body>
 </html>
