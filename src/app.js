@@ -103,7 +103,9 @@ function displayOperator(ref) {
   }
 
   const input = validateOperator(ref);
+
   if (operation === "") {
+    console.log("hola!");
     operation = screen.textContent + input;
     screen.textContent = "";
   } else {
