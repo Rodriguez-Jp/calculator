@@ -2,7 +2,8 @@
 const numbers = document.querySelectorAll(".num");
 const operators = document.querySelectorAll(".op");
 const screen = document.querySelector("#screen");
-let dotValidator = true;
+let operation = "";
+let previousCalc = false;
 
 //EventListeners
 
@@ -27,6 +28,11 @@ function loadEventListeners() {
 
 //Get the reference and display his value (Numbers)
 function displayNumbers(ref) {
+  //Check if a previous calculation was made in order to erase the screen
+  if (previousCalc && operation === "") {
+    clearScreen();
+    previousCalc = false;
+  }
   const input = validateNumbers(ref);
   screen.innerHTML += input;
 }
@@ -35,11 +41,6 @@ function displayNumbers(ref) {
 function validateNumbers(ref) {
   const input = ref.getAttribute("value");
 
-  //Validation for dot (avoid multiple dots in the same number)
-  if (!dotValidator && input === ".") {
-    dotValidator = true;
-    return input;
-  }
   if (
     (input === "." && screen.textContent.includes(".")) ||
     (input === "." && screen.textContent === "")
@@ -70,7 +71,9 @@ function validateNumbers(ref) {
 function displayOperator(ref) {
   //If users press '='
   if (ref.getAttribute("value") === "=") {
-    calculate();
+    const resultado = calculate(operation + screen.textContent);
+    screen.textContent = resultado;
+    operation = "";
     return;
   }
 
@@ -79,7 +82,7 @@ function displayOperator(ref) {
     clearScreen();
   }
 
-  //If users press the +/- button (**Need some work**)
+  //If users press the +/- button
   if (ref.getAttribute("value") === "sign") {
     let newNum = changeSign(screen.textContent);
     screen.textContent = newNum;
@@ -92,7 +95,7 @@ function displayOperator(ref) {
     return;
   }
 
-  //If user press the percetange button (**Need some work**)
+  //If user press the percetange button
   if (ref.getAttribute("value") === "%") {
     let percentageNum = percentage(screen.textContent);
     screen.textContent = percentageNum;
@@ -100,43 +103,45 @@ function displayOperator(ref) {
   }
 
   const input = validateOperator(ref);
-  screen.innerHTML += input;
+
+  if (operation === "") {
+    console.log("hola!");
+    operation = screen.textContent + input;
+    screen.textContent = "";
+  } else {
+    screen.textContent = calculate(operation + screen.textContent);
+    operation = "";
+  }
 }
 
 //Validate if operator can be added
 function validateOperator(ref) {
   const input = ref.getAttribute("value");
-  const last_input = screen.textContent.slice(-1);
-  const conditions = ["+", "-", "/", "*", "%", "del"];
 
+  //Cannot add operators when screen is empty
   if (screen.textContent.trim() === "") {
     return "";
   }
-
-  if (conditions.includes(input) && conditions.includes(last_input)) {
-    return "";
-  }
-
-  dotValidator = false;
   return input;
 }
 
 //Calculate the operation
-function calculate() {
-  const resultado = eval(screen.textContent);
-  screen.textContent = resultado;
+function calculate(str) {
+  const resultado = eval(str);
+  previousCalc = true;
+  return resultado;
 }
 
 //Clear the screen
 function clearScreen() {
   screen.textContent = "";
+  operation = "";
 }
 
 //Change the sign of the number
 function changeSign(num) {
   num = parseFloat(num) * -1;
-  const numString = String(num);
-  return numString;
+  return String(num);
 }
 
 //Delete numbers
